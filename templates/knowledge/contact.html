@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Contact — Fieldnotes{% endblock %}
+{% block content %}
+<section class="contact-layout page-width">
+  <div class="contact-intro"><div class="breadcrumb"><a href="{% url 'home' %}">Home</a><span>/</span><span>Contact</span></div><p class="eyebrow">SAY HELLO</p><h1>Good questions<br>start <em>somewhere.</em></h1><p class="page-lede">Suggest a topic, point out a correction, or just tell me what you are working on.</p><div class="contact-note"><span class="status-dot"></span><span>Your message goes straight to the site inbox.</span></div></div>
+  <form class="form-card contact-form" method="post" novalidate>{% csrf_token %}{% if form.non_field_errors %}<div class="form-errors">{{ form.non_field_errors }}</div>{% endif %}{% include "partials/form_fields.html" %}<button class="button" type="submit">Send message <span aria-hidden="true">→</span></button><p class="form-privacy">Your details are used only to respond to this message.</p></form>
+</section>
+{% endblock %}

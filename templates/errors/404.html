@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Page not found — Fieldnotes{% endblock %}
+{% block content %}<section class="error-page page-width"><p class="error-code">404 <span>/</span> NOT FOUND</p><h1>This page has<br>moved on.</h1><p class="page-lede">The link may be old, or the page may have been unpublished.</p><a class="button" href="{% url 'home' %}">Back to Fieldnotes <span aria-hidden="true">→</span></a></section>{% endblock %}

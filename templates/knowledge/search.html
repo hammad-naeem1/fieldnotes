@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{% if query %}Search: {{ query }}{% else %}Search{% endif %} — Fieldnotes{% endblock %}
+{% block content %}
+<section class="search-page page-width">
+  <div class="breadcrumb"><a href="{% url 'home' %}">Home</a><span>/</span><span>Search</span></div>
+  <p class="eyebrow">SEARCH THE LIBRARY</p><h1>{% if query %}Results for <em>“{{ query }}”</em>{% else %}Find an idea.{% endif %}</h1>
+  <form class="large-search" method="get" action="{% url 'search' %}" role="search"><label class="visually-hidden" for="search-query">Search notes and journal</label><input id="search-query" type="search" name="q" value="{{ query }}" placeholder="Try Python, databases, or machine learning" autofocus><button class="button" type="submit">Search <span aria-hidden="true">→</span></button></form>
+  {% if query %}<div class="search-results-grid"><section><div class="section-heading compact"><div><p class="eyebrow">REFERENCE</p><h2>Notes</h2></div><a href="{% url 'notes' %}?q={{ query|urlencode }}" class="quiet-link">More notes →</a></div>{% for note in note_results %}<a class="search-result" href="{% url 'note_detail' note.slug %}"><span class="result-kind">{{ note.category.name }}</span><strong>{{ note.title }}</strong><span>{{ note.summary }}</span></a>{% empty %}<p class="muted">No matching notes.</p>{% endfor %}</section><section><div class="section-heading compact"><div><p class="eyebrow">LONG-FORM</p><h2>Journal</h2></div><a href="{% url 'blog' %}?q={{ query|urlencode }}" class="quiet-link">More entries →</a></div>{% for post in blog_results %}<a class="search-result" href="{% url 'blog_detail' post.slug %}"><span class="result-kind">Journal · {{ post.published_at|date:"M j, Y" }}</span><strong>{{ post.title }}</strong><span>{{ post.summary }}</span></a>{% empty %}<p class="muted">No matching journal entries.</p>{% endfor %}</section></div>{% endif %}
+</section>
+{% endblock %}

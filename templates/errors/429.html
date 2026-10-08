@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Please wait a moment — Fieldnotes{% endblock %}
+{% block content %}<section class="error-page page-width"><p class="error-code">429 <span>/</span> SLOW DOWN</p><h1>Take a short<br>breather.</h1><p class="page-lede">There have been several requests in a short time. Wait a few minutes and try again.</p><a class="button" href="{% url 'home' %}">Return home <span aria-hidden="true">→</span></a></section>{% endblock %}

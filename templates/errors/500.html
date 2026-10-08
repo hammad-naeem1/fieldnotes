@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Something went wrong — Fieldnotes{% endblock %}
+{% block content %}<section class="error-page page-width"><p class="error-code">500 <span>/</span> SERVER ERROR</p><h1>A small pause<br>in the process.</h1><p class="page-lede">Something went wrong while loading this page. Please try again in a moment.</p><a class="button" href="{% url 'home' %}">Return home <span aria-hidden="true">→</span></a></section>{% endblock %}

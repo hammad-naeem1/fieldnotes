@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{% if current_category %}{{ current_category.name }} notes{% else %}Notes library{% endif %} — Fieldnotes{% endblock %}
+{% block content %}
+<div class="library-layout page-width">
+  <aside class="library-sidebar">
+    <p class="sidebar-label">LEARNING LIBRARY</p>
+    <h2>Explore by subject</h2>
+    <nav aria-label="Note categories" class="category-nav">
+      <a class="category-link{% if not current_category %} active{% endif %}" href="{% url 'notes' %}"><span>All notes</span><span class="category-count">{{ page.paginator.count }}</span></a>
+      {% for category in categories %}<a class="category-link{% if current_category == category %} active{% endif %}" href="{% url 'notes' %}?category={{ category.slug }}"><span>{{ category.name }}</span><span aria-hidden="true">↗</span></a>{% endfor %}
+    </nav>
+    <div class="sidebar-separator"></div>
+    <p class="sidebar-label">POPULAR TAGS</p>
+    <div class="tag-cloud">{% for tag in tags %}<a class="tag-chip{% if current_tag == tag.slug %} selected{% endif %}" href="{% url 'notes' %}?tag={{ tag.slug }}">{{ tag.name }}</a>{% empty %}<span class="muted small">Tags will appear here.</span>{% endfor %}</div>
+    <div class="sidebar-help"><span class="help-mark">?</span><p>Looking for something specific?</p><a href="{% url 'contact' %}">Suggest a topic <span aria-hidden="true">→</span></a></div>
+  </aside>
+  <section class="library-main">
+    <div class="breadcrumb"><a href="{% url 'home' %}">Home</a><span>/</span><span>Library</span>{% if current_category %}<span>/</span><span>{{ current_category.name }}</span>{% endif %}</div>
+    <div class="library-title-row"><div><p class="eyebrow">REFERENCE NOTES <span class="eyebrow-count">{{ page.paginator.count }} ITEMS</span></p><h1>{% if current_category %}{{ current_category.name }}{% else %}The notes library{% endif %}</h1><p class="page-lede">Practical explanations, carefully organized. Read one idea at a time or follow a subject deeper.</p></div></div>
+    <form class="filter-bar" method="get" action="{% url 'notes' %}">
+      {% if current_category %}<input type="hidden" name="category" value="{{ current_category.slug }}">{% endif %}{% if current_tag %}<input type="hidden" name="tag" value="{{ current_tag }}">{% endif %}
+      <label class="visually-hidden" for="note-filter">Filter notes</label><input id="note-filter" type="search" name="q" value="{{ query }}" placeholder="Filter this library...">
+      <button class="button button-small" type="submit">Filter</button>
+      {% if query or current_tag %}<a class="quiet-link" href="{% if current_category %}{% url 'notes' %}?category={{ current_category.slug }}{% else %}{% url 'notes' %}{% endif %}">Clear</a>{% endif %}
+      <span class="result-count">{{ page.paginator.count }} result{{ page.paginator.count|pluralize }}</span>
+    </form>
+    <div class="library-list">
+      {% for note in page %}
+        <article class="library-item"><div class="item-meta"><span class="item-category">{{ note.category.name }}</span><span>{{ note.published_at|date:"M j, Y" }}</span></div><h2><a href="{% url 'note_detail' note.slug %}">{{ note.title }}</a></h2><p>{{ note.summary }}</p><div class="item-footer"><div class="tag-row">{% for tag in note.tags.all|slice:":4" %}<a href="{% url 'notes' %}?tag={{ tag.slug }}" class="tag-chip">{{ tag.name }}</a>{% endfor %}</div><a class="read-link" href="{% url 'note_detail' note.slug %}">Read note <span aria-hidden="true">→</span></a></div></article>
+      {% empty %}<div class="empty-state"><span class="empty-icon">⌕</span><h2>No notes found</h2><p>Try another search or clear your filters.</p><a class="button button-outline" href="{% url 'notes' %}">View all notes</a></div>{% endfor %}
+    </div>
+    {% if page.has_other_pages %}<nav class="pagination" aria-label="Pagination">{% if page.has_previous %}<a href="?page={{ page.previous_page_number }}{% if query %}&q={{ query|urlencode }}{% endif %}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if current_tag %}&tag={{ current_tag }}{% endif %}">← Newer</a>{% else %}<span></span>{% endif %}<span>Page {{ page.number }} of {{ page.paginator.num_pages }}</span>{% if page.has_next %}<a href="?page={{ page.next_page_number }}{% if query %}&q={{ query|urlencode }}{% endif %}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if current_tag %}&tag={{ current_tag }}{% endif %}">Older →</a>{% endif %}</nav>{% endif %}
+  </section>
+</div>
+{% endblock %}

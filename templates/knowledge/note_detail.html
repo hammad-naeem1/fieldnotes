@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load content_extras %}
+{% block title %}{{ note.title }} — Fieldnotes{% endblock %}
+{% block content %}
+{% if preview_mode %}<div class="preview-banner"><span>PREVIEW</span> This note is not public yet. <a href="{% url 'admin:knowledge_note_change' note.pk %}">Return to editor</a></div>{% endif %}
+<div class="reader-layout page-width">
+  <aside class="reader-sidebar"><a class="back-link" href="{% url 'notes' %}">← All notes</a><p class="sidebar-label">IN THIS LIBRARY</p><nav class="category-nav" aria-label="Learning categories">{% for category in nav_categories %}<a class="category-link{% if category == note.category %} active{% endif %}" href="{% url 'notes' %}?category={{ category.slug }}">{{ category.name }}</a>{% endfor %}</nav><div class="sidebar-separator"></div><p class="sidebar-label">ON THIS PAGE</p><p class="muted small">Use the headings to follow the explanation.</p></aside>
+  <article class="reader-article">
+    <div class="breadcrumb"><a href="{% url 'home' %}">Home</a><span>/</span><a href="{% url 'notes' %}">Library</a><span>/</span><a href="{% url 'notes' %}?category={{ note.category.slug }}">{{ note.category.name }}</a></div>
+    <header class="article-header"><div class="article-kicker"><span>{{ note.category.name }}</span><span>{{ note.published_at|date:"F j, Y" }}</span></div><h1>{{ note.title }}</h1><p class="article-deck">{{ note.summary }}</p><div class="article-byline"><span class="avatar-initial">{{ note.author.first_name|default:note.author.username|slice:":1"|upper }}</span><span>By <strong>{{ note.author.get_full_name|default:note.author.username }}</strong></span><span class="byline-divider">·</span><span>{{ note.body|wordcount }} words</span></div>
+      {% if not preview_mode %}<form action="{% url 'toggle_saved' 'note' note.slug %}" method="post" class="save-form">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><input type="hidden" name="intent" value="{% if is_saved %}remove{% else %}save{% endif %}"><button class="save-button{% if is_saved %} saved{% endif %}" type="submit" aria-label="{% if is_saved %}Remove this note from saved content{% else %}Save this note{% endif %}" aria-pressed="{{ is_saved|yesno:'true,false' }}">{% if is_saved %}✓ Saved{% else %}＋ Save note{% endif %}</button></form>{% endif %}
+    </header>
+    {% if note.cover_image %}<img class="article-cover" src="{{ note.cover_image.url }}" alt="Illustration for {{ note.title }}">{% endif %}
+    <div class="prose">{{ note.body|markdown_content }}</div>
+    {% if note.assets.count %}<section class="download-box"><p class="sidebar-label">FILES & RESOURCES</p><ul>{% for asset in note.assets.all %}<li><a href="{% url 'download_asset' asset.pk %}">{{ asset.original_name|default:asset.file.name }}</a><span class="asset-meta">{{ asset.content_type }} · {{ asset.file_size|filesizeformat }}</span></li>{% endfor %}</ul></section>{% endif %}
+    <div class="article-tags"><span>Filed under</span>{% for tag in note.tags.all %}<a class="tag-chip" href="{% url 'notes' %}?tag={{ tag.slug }}">{{ tag.name }}</a>{% endfor %}</div>
+    {% if related_notes %}<section class="related-section"><div class="section-heading"><div><p class="eyebrow">KEEP EXPLORING</p><h2>Related notes</h2></div><a class="quiet-link" href="{% url 'notes' %}">Full library →</a></div><div class="related-grid">{% for related in related_notes %}<a class="related-card" href="{% url 'note_detail' related.slug %}"><span>{{ related.category.name }}</span><strong>{{ related.title }}</strong><span class="related-arrow" aria-hidden="true">↗</span></a>{% endfor %}</div></section>{% endif %}
+  </article>
+</div>
+{% endblock %}

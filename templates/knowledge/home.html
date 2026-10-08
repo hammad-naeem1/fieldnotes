@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Fieldnotes — Engineering knowledge, made practical{% endblock %}
+{% block content %}
+<section class="home-hero page-width">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="eyebrow-rule"></span> A practical learning library</p>
+    <h1>Make the hard<br>things <em>make sense.</em></h1>
+    <p class="hero-intro">Clear technical notes, thoughtful tutorials, and small projects for building a deeper understanding of software and data.</p>
+    <div class="hero-actions"><a class="button" href="{% url 'notes' %}">Explore the library <span aria-hidden="true">→</span></a><a class="quiet-link" href="{% url 'blog' %}">Read the journal</a></div>
+    <div class="hero-meta"><span class="status-dot" aria-hidden="true"></span> Notes for curious builders <span class="meta-divider">/</span> Written to be revisited</div>
+  </div>
+  <aside class="hero-panel" aria-label="Explore a topic">
+    <div class="panel-topline"><span>START HERE</span><span class="panel-index">01 — 04</span></div>
+    <h2>Pick a thread.<br>Follow it further.</h2>
+    <p>Browse by subject, then connect the ideas through examples and related reading.</p>
+    <div class="topic-list">
+      {% for category in nav_categories|slice:":4" %}<a class="topic-row" href="{% url 'notes' %}?category={{ category.slug }}"><span class="topic-number">0{{ forloop.counter }}</span><span>{{ category.name }}</span><span class="topic-arrow" aria-hidden="true">↗</span></a>{% empty %}
+        <a class="topic-row" href="{% url 'notes' %}"><span class="topic-number">01</span><span>Browse all notes</span><span class="topic-arrow" aria-hidden="true">↗</span></a>
+      {% endfor %}
+    </div>
+    <a class="panel-foot-link" href="{% url 'notes' %}">View all subjects <span aria-hidden="true">→</span></a>
+  </aside>
+</section>
+
+<section class="home-section page-width">
+  <div class="section-heading"><div><p class="eyebrow">THE LIBRARY</p><h2>Knowledge you can use.</h2></div><a class="quiet-link" href="{% url 'notes' %}">All notes <span aria-hidden="true">→</span></a></div>
+  <div class="card-grid note-grid">
+    {% for note in recent_notes %}
+      <article class="content-card note-card">
+        <div class="card-kicker"><span>{{ note.category.name }}</span><span>{{ note.published_at|date:"M j, Y" }}</span></div>
+        <h3><a href="{% url 'note_detail' note.slug %}">{{ note.title }}</a></h3>
+        <p>{{ note.summary }}</p>
+        <div class="card-bottom"><span class="read-time">{{ note.body|wordcount }} words</span><a class="card-arrow" href="{% url 'note_detail' note.slug %}" aria-label="Read {{ note.title }}">↗</a></div>
+      </article>
+    {% empty %}
+      <div class="empty-card"><span class="empty-icon">◎</span><h3>The library is getting ready.</h3><p>New notes will appear here as they are published.</p><a class="quiet-link" href="{% url 'about' %}">About this project →</a></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="journal-band">
+  <div class="page-width journal-inner">
+    <div><p class="eyebrow">FIELD JOURNAL</p><h2>Learning out loud.</h2><p>Longer explanations, lessons from the work, and ideas worth thinking through.</p></div>
+    <div class="journal-list">
+      {% for post in recent_posts %}<a class="journal-row" href="{% url 'blog_detail' post.slug %}"><span class="journal-date">{{ post.published_at|date:"M j" }}</span><span class="journal-title">{{ post.title }}</span><span class="journal-arrow" aria-hidden="true">↗</span></a>{% empty %}<p class="muted">The first journal entry is on its way.</p>{% endfor %}
+      <a class="journal-all" href="{% url 'blog' %}">Read all journal entries <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="closing-cta page-width"><div><p class="eyebrow">KEEP YOUR PLACE</p><h2>Build a library<br>of your own.</h2></div><div><p>Create an account to save notes and return to the ideas you want to explore.</p><a class="button button-outline" href="{% url 'signup' %}">Join the library <span aria-hidden="true">→</span></a></div></section>
+{% endblock %}

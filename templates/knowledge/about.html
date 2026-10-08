@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}About — Fieldnotes{% endblock %}
+{% block content %}
+<article class="about-page page-width">
+  <div class="breadcrumb"><a href="{% url 'home' %}">Home</a><span>/</span><span>About</span></div>
+  <p class="eyebrow">ABOUT FIELDNOTES</p><h1>A place to make<br><em>understanding stick.</em></h1>
+  <div class="about-columns"><div class="about-lede"><p class="large-copy">Fieldnotes is a personal learning library for the ideas behind software, data, and the tools we use to build.</p><p>It brings together practical notes, longer tutorials, and small projects. Each piece is written to be useful on its own and easier to connect to what comes next.</p><a class="button" href="{% url 'notes' %}">Browse the library <span aria-hidden="true">→</span></a></div><div class="about-details"><section><span class="detail-number">01</span><div><h2>Clear before clever.</h2><p>Start with the foundation, explain the moving parts, then work through an example.</p></div></section><section><span class="detail-number">02</span><div><h2>Grounded in practice.</h2><p>Code, diagrams, and exercises connect each explanation to the work.</p></div></section><section><span class="detail-number">03</span><div><h2>Always growing.</h2><p>Notes evolve as the questions get better and the understanding gets deeper.</p></div></section></div></div>
+  <div class="about-contact"><p>Have an idea for a topic or a correction to share?</p><a class="quiet-link" href="{% url 'contact' %}">Get in touch →</a></div>
+</article>
+{% endblock %}
