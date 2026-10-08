@@ -9,5 +9,5 @@ layout: default
     {% if page.description %}<p class="article-deck">{{ page.description | escape }}</p>{% endif %}
   </header>
   <div class="prose">{{ content }}</div>
-  <aside class="article-signoff"><span class="signoff-mark">HN</span><p>Thanks for reading. Find my experiments on <a href="https://huggingface.co/CodeWithHammad">Hugging Face</a> or say hello by <a href="mailto:hammadconnect1@gmail.com">email</a>.</p></aside>
+  <aside class="article-signoff"><span class="signoff-mark">HN</span><p>Thanks for reading. Find my experiments on <a href="{{ site.huggingface_url }}">Hugging Face</a> or say hello by <a href="mailto:{{ site.contact_email }}">email</a>.</p></aside>
 </article>

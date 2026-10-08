@@ -5,6 +5,11 @@ baseurl: "/fieldnotes"
 timezone: "Asia/Karachi"
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title/
+contact_email: "hammadconnect1@gmail.com"
+github_url: "https://github.com/hammad-naeem1"
+huggingface_username: "codehammad"
+huggingface_url: "https://huggingface.co/codehammad"
+discord_username: "hammad-naeem1"
 
 collections:
   projects:

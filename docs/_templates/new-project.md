@@ -4,9 +4,11 @@ date: YYYY-MM-DD
 summary: "One sentence about the problem and what you built."
 status: "In progress"
 tags: [Python, machine-learning]
-github_url: "https://github.com/your-username/your-project"
-huggingface_url: "https://huggingface.co/your-username/your-model-or-space"
-demo_url: ""
+github_url: "https://github.com/hammad-naeem1/your-project"
+huggingface_url: "https://huggingface.co/codehammad/your-model-or-space"
+demo_url:
+dataset_url:
+paper_url:
 ---
 
 ## The question

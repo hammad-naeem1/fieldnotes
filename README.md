@@ -55,7 +55,9 @@ New posts belong in `docs/_posts/`. The homepage and Blog page list them automat
 4. Write what problem you worked on, what you built, what you learned, and what you would improve.
 5. Commit the file to `main`. It will appear on **My Portfolio** after GitHub Pages rebuilds.
 
-Use the `huggingface_url` field to link to a model or demo on the [CodeWithHammad Hugging Face profile](https://huggingface.co/CodeWithHammad), and `github_url` for the source code. The website shows the project description and links; it does not host or run the model.
+Use the `huggingface_url` field to link to one of your models or demos, for example `https://huggingface.co/codehammad/your-model`. Your profile is [huggingface.co/codehammad](https://huggingface.co/codehammad). A project can also link to source code, a live demo, a dataset, or a paper/report. Add future work only under `docs/_projects/`; you do not have to change the roadmap or Contact page to add a project. The website shows the project description and links; it does not host or run the model.
+
+To update the portfolio later, edit an existing project file in `docs/_projects/` or add another one using the same steps. The roadmap and learning resources are separate and can stay untouched while you add models and links.
 
 ## Add an image
 
@@ -71,8 +73,10 @@ Do not put large videos or model weights in this repository. Link videos from th
 
 - Email: `hammadconnect1@gmail.com`
 - GitHub: [hammad-naeem1](https://github.com/hammad-naeem1)
-- Hugging Face: [CodeWithHammad](https://huggingface.co/CodeWithHammad)
+- Hugging Face: [codehammad](https://huggingface.co/codehammad)
 - Discord name: `hammad-naeem1` (shown as text; a Discord username alone is not a public profile link)
+
+The public **Contact me** page is at `/contact/`. Its email button opens an email app; the static website does not collect or store form messages. The profile links and email are centralized in `docs/_config.yml` if you need to update them later.
 
 No Reddit link is shown yet because a Reddit username or profile link has not been provided.
 

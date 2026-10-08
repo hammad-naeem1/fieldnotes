@@ -39,6 +39,6 @@ After you understand a basic model and how to evaluate it, learn tensors, layers
 
 ## 6. Share your work
 
-Put readable code and a project explanation on GitHub. Publish a model card or interactive demo on [Hugging Face](https://huggingface.co/CodeWithHammad), then link it from your portfolio. Keep large model weights and video files on their specialist platforms; link to them from the site.
+Put readable code and a project explanation on GitHub. Publish a model card or interactive demo on [Hugging Face](https://huggingface.co/codehammad), then link it from your portfolio. Keep large model weights and video files on their specialist platforms; link to them from the site.
 
 The repeatable loop is simple: **study one idea → try it on data → write a short note → repeat.**
