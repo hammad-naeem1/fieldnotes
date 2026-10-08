@@ -1,0 +1,33 @@
+title: "hammad.dev"
+description: "Machine learning notes, learning guides, and projects by Hammad Naeem."
+url: "https://hammad-naeem1.github.io"
+baseurl: "/fieldnotes"
+timezone: "Asia/Karachi"
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/
+
+collections:
+  projects:
+    output: true
+    permalink: /portfolio/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+exclude:
+  - "README.md"
+  - "_templates"

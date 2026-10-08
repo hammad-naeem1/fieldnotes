@@ -1,142 +1,81 @@
-# Fieldnotes
+# hammad.dev — machine learning notes and portfolio
 
-A responsive publishing site for technical notes, learning resources, and a field journal. It uses Django server-rendered pages, Django authentication and permissions, PostgreSQL in production, and private S3-compatible storage for uploads.
+This repository contains a static website in the `docs/` folder. GitHub Pages can publish that folder directly from this repository.
 
-## Architecture
+- No external database, visitor accounts, or website upload dashboard.
+- Blog posts and portfolio entries are Markdown files stored in this GitHub repository.
+- Small images can also be stored here. Videos and large model files should stay on YouTube or Hugging Face and be linked from the site.
+- The site is public after GitHub Pages is enabled. Do not add passwords, private data, or API keys to the repository.
 
-- **Django 6.1** serves the public site and account pages. Built-in auth supplies password hashing, sessions, password reset tokens, CSRF protection, and backend permissions.
-- **PostgreSQL** is the production database. A persistent SQLite database is used locally so the project runs without extra services.
-- **Django admin** is the publishing CMS. Model permissions gate each content operation; the private `/manage/` page provides an overview.
-- **Markdown + nh3** render formatted technical writing and sanitize the resulting HTML. Pygments provides code block highlighting.
-- **S3-compatible storage** holds production uploads. Local development uses the `media/` directory.
-- **WhiteNoise** serves collected static files in production. No frontend build runtime is needed.
+The name **hammad.dev** is the website’s brand. The free GitHub Pages address for this repository is expected to be <https://hammad-naeem1.github.io/fieldnotes/>. That address is not a custom `hammad.dev` domain.
 
-The machine used to scaffold this project has Python 3.14.3 and no Node.js. Django 6.1 supports Python 3.14; this project pins Django 6.1.2, which includes the October 2026 security and bug fixes. See the [Django 6.1.2 release notes](https://docs.djangoproject.com/en/6.1/releases/6.1.2/) and [Django authentication documentation](https://docs.djangoproject.com/en/6.1/topics/auth/default/).
+## Publish the site the first time
 
-## Project structure
+First, commit and push these changes to the `main` branch of `hammad-naeem1/fieldnotes`. Then:
 
-```text
-config/                  Settings and URL configuration
-knowledge/               Models, validation, admin, views, migrations, tests
-templates/               Public, account, error, and dashboard pages
-static/css/site.css      Responsive visual system
-media/                   Local development uploads
-requirements.txt         Python dependencies
-.env.example             Local and production environment variable reference
-Dockerfile               Container deployment option
-build.sh                 Dependency installation and static collection
+1. Open <https://github.com/hammad-naeem1/fieldnotes>.
+2. Click **Settings** near the top of the repository. If it is hidden, open the repository’s **…** menu and choose **Settings**.
+3. In the left menu, click **Pages**.
+4. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+5. For the branch, choose **main**. For the folder, choose **/docs**.
+6. Click **Save**.
+7. On that Pages settings screen, wait for GitHub to show the live link. Open it to see the site.
+
+GitHub Pages is free for public repositories on GitHub Free. It rebuilds the site when you push changes to the selected branch. The repository must stay public for this free setup. GitHub documents the current setup in [Configuring a publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+
+## Add a blog post from GitHub
+
+You can create a post in the GitHub website; you do not need to edit the website itself or use a special writing app.
+
+1. Open the `fieldnotes` repository on GitHub.
+2. Click **Add file**, then **Create new file**.
+3. In the filename box, enter a path like `docs/_posts/2026-10-09-my-first-ml-project.md`. Use the post date in `YYYY-MM-DD` format and a short lowercase title.
+4. Paste this at the top, then replace the example words with your own:
+
+   ```yaml
+   ---
+   title: "My first ML project"
+   date: 2026-10-09 12:00:00 +0500
+   description: "What I tried, what happened, and what I learned."
+   categories: [learning]
+   ---
+   ```
+
+5. Leave a blank line after the last `---`, then write the post. Use `##` before a section heading, `-` for a bullet, and `[words to click](https://example.com)` for a link.
+6. Scroll down. Under **Commit changes**, write a short message such as `Add first ML project article` and select **Commit directly to the main branch**.
+7. Click **Commit changes**. GitHub Pages will publish it after its build finishes. Check the **Actions** tab if you want to see the publishing status.
+
+New posts belong in `docs/_posts/`. The homepage and Blog page list them automatically.
+
+## Add a portfolio project
+
+1. In the repository, choose **Add file → Create new file**.
+2. Name it `docs/_projects/house-price-prediction.md` (replace the last part with a short project name).
+3. Copy the starter fields from [`docs/_templates/new-project.md`](docs/_templates/new-project.md). Replace the example links with your project’s real links. Delete a link line if you do not have that page yet.
+4. Write what problem you worked on, what you built, what you learned, and what you would improve.
+5. Commit the file to `main`. It will appear on **My Portfolio** after GitHub Pages rebuilds.
+
+Use the `huggingface_url` field to link to a model or demo on the [CodeWithHammad Hugging Face profile](https://huggingface.co/CodeWithHammad), and `github_url` for the source code. The website shows the project description and links; it does not host or run the model.
+
+## Add an image
+
+For a small screenshot or chart, open `docs/assets/images/` in GitHub and choose **Add file → Upload files**. If you upload from the top of the repository, make sure the file ends up in that folder. Commit the image, then include it in a Markdown post like this:
+
+```markdown
+![A short description of the chart]({{ '/assets/images/my-chart.png' | relative_url }})
 ```
 
-## Database schema
+Do not put large videos or model weights in this repository. Link videos from their video page and host model files or demos on Hugging Face. GitHub Pages has published-site size and bandwidth limits; see [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits).
 
-- Django `User` and `Profile` hold accounts, bio, and website details. Django staff and model permissions control publishing access.
-- `Category` and `Tag` organize content. The first migration seeds the requested subject categories; the admin can add, rename, reorder, or remove them.
-- `Note` and `BlogPost` store Markdown content, summaries, authors, tags, optional cover art, draft/published state, and publication time. A future publication time remains hidden until that time.
-- `SavedContent` points to exactly one note or post. Database constraints prevent duplicate or ambiguous saves.
-- `UploadedAsset` stores attachment metadata and points to exactly one note or post. Files are validated and served through a route that checks whether the parent content is public.
-- `ContactMessage` stores validated contact submissions in the private admin inbox.
-- `RateLimitBucket` stores hashed client identifiers and request counts for login, signup, password reset, and contact submissions.
+## Contact links on the site
 
-## Pages and user flows
+- Email: `hammadconnect1@gmail.com`
+- GitHub: [hammad-naeem1](https://github.com/hammad-naeem1)
+- Hugging Face: [CodeWithHammad](https://huggingface.co/CodeWithHammad)
+- Discord name: `hammad-naeem1` (shown as text; a Discord username alone is not a public profile link)
 
-Public pages include Home, the categorized Notes library, note detail, Journal listing, article detail, combined search, About, Contact, and branded 404/500 pages. Notes can be filtered by category and tag; journal articles can be searched and filtered by tag.
+No Reddit link is shown yet because a Reddit username or profile link has not been provided.
 
-Readers can register, sign in, sign out, request a one-time password reset, edit their profile, change their password, save notes and posts, and review saved content. Staff can open `/manage/` and use the permission-checked content manager to create, preview, schedule, publish, unpublish, and delete content; manage categories, tags, and files; and review user and contact information.
+## About the other files in this repository
 
-## Local setup
-
-Use Python 3.14.3 (the project also targets Django-supported Python 3.12 and 3.13 versions).
-
-1. Create and activate an isolated environment:
-
-   ```sh
-   python3 -m venv .venv
-   source .venv/bin/activate
-   ```
-
-2. Install dependencies:
-
-   ```sh
-   python -m pip install -r requirements.txt
-   ```
-
-3. Create a local environment file and replace the development secret:
-
-   ```sh
-   cp .env.example .env
-   ```
-
-   For local use, `DEBUG=true` and SQLite are enabled. Password reset links are printed to the terminal. No database URL is needed.
-
-4. Create the database and the administrator account:
-
-   ```sh
-   python manage.py migrate
-   python manage.py createsuperuser
-   ```
-
-5. Start the website:
-
-   ```sh
-   python manage.py runserver
-   ```
-
-   Visit `http://127.0.0.1:8000`. The publishing area is at `/manage/`; the content manager is at `/manage/content/`.
-
-6. Run the core workflow tests and Django checks:
-
-   ```sh
-   python manage.py test
-   python manage.py check
-   ```
-
-To remove old rate-limit records periodically, run `python manage.py prune_rate_limits` (daily is suitable for a small site).
-
-## Publishing
-
-Sign in as a Django superuser or give a staff account the appropriate model permissions. Add categories and tags as needed. Create a note or journal entry, write its body in Markdown, choose a draft or published status, and set a publication time. Add approved cover images and attachments in the content form. Use the preview link before publishing. Django admin asks for confirmation before deleting records.
-
-Accepted uploads are JPG, PNG, WebP, PDF, TXT, Markdown, CSV, and ZIP, up to 15 MB each. Image content is verified with Pillow; PDF and ZIP headers are checked. Uploaded content is restricted to staff through Django admin.
-
-## Production environment
-
-Set these values in the hosting platform's secret/environment settings; do not commit `.env`:
-
-- `DEBUG=false`
-- `SECRET_KEY`: generate a unique random value and keep it private
-- `ALLOWED_HOSTS`: the platform hostname and any custom domain, comma-separated
-- `CSRF_TRUSTED_ORIGINS`: full HTTPS origins, comma-separated
-- `DATABASE_URL`: PostgreSQL connection URL
-- `DEFAULT_FROM_EMAIL`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `EMAIL_USE_TLS`: SMTP delivery for password reset links
-- `AWS_STORAGE_BUCKET_NAME`, `AWS_S3_ENDPOINT_URL`, `AWS_S3_REGION_NAME`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`: a private S3-compatible bucket with only the required object read/write access
-- `ENABLE_HSTS=true` after HTTPS is confirmed end-to-end
-
-For Cloudflare R2, use its account S3 endpoint and region `auto`; its S3 API is compatible with the boto3-based storage backend. See [R2 S3 API compatibility](https://developers.cloudflare.com/r2/api/s3/). AWS S3 can be used without an endpoint override.
-
-## Deployment on Render
-
-The project includes a Dockerfile and `build.sh`. For a Render native Python web service, use Python 3.14.3, set the build command to `bash build.sh`, and the start command to:
-
-```sh
-gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --workers 3
-```
-
-Connect a managed Render PostgreSQL database through `DATABASE_URL`. Set the environment values above in the service dashboard. Set `python manage.py migrate` as the pre-deploy command so schema changes are applied before new code starts. Create the first administrator using the service shell with `python manage.py createsuperuser`. Render's [Django deployment guide](https://render.com/docs/deploy-django) documents the web service setup; its [Python version guide](https://render.com/docs/python-version) lists Python 3.14.3.
-
-For a custom domain, add it to the web service in the Render dashboard, update DNS at the domain registrar as Render instructs, then add the HTTPS origin to `CSRF_TRUSTED_ORIGINS` and the hostname to `ALLOWED_HOSTS`. Render provisions TLS for configured custom domains. See [Render custom domains](https://render.com/docs/custom-domains).
-
-Keep the object bucket private. The app issues short-lived signed URLs for cover images and streams attachments through a route that only exposes files attached to public content (or to a staff member with file-view permission). Enable storage versioning or scheduled exports where supported by the chosen provider.
-
-## Backups and operations
-
-- Enable automated PostgreSQL backups or point-in-time recovery on the selected database plan. Before risky schema changes, take a snapshot and verify restore into a staging database.
-- Retain an encrypted off-platform PostgreSQL export on a regular schedule. A manual export can be made with `pg_dump --format=custom "$DATABASE_URL" --file=fieldnotes.dump`; store the dump in a separate private backup location.
-- Enable object versioning or scheduled export for uploads. Database backups do not include S3 objects.
-- Keep `SECRET_KEY`, SMTP credentials, database URLs, and storage keys only in the hosting secret store. Rotate a leaked key immediately.
-- Before going live, run `python manage.py check --deploy`, verify HTTPS and email delivery, and confirm one database and one file restore path.
-
-## Security notes and current scope
-
-Server-side forms validate input. Database writes use Django's ORM. Django enforces CSRF tokens, password hashing, sessions, and admin permissions. Request limits are database-backed and keyed by an HMAC-SHA-256 of the client IP; raw IP values are not stored. By default the app uses `REMOTE_ADDR`. Only set `RATE_LIMIT_IP_HEADER=HTTP_X_FORWARDED_FOR` when a trusted reverse proxy replaces that header.
-
-Contact submissions are persisted in the dashboard inbox; no outbound notification is configured. Email is used for password resets once SMTP is configured. Users do not have email verification or social login in this first version.
+The root of this repository still contains files from the earlier Django/Render prototype. The GitHub Pages setup above publishes only `docs/`; those older server files are not needed for this static site. Follow the steps in this README for publishing and updating the public website.

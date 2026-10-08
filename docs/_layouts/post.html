@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<article class="article-shell">
+  <a class="back-link" href="{{ '/blog/' | relative_url }}">← All notes</a>
+  <header class="article-header">
+    <p class="eyebrow">FIELD NOTES <span>/</span> {{ page.date | date: "%B %d, %Y" | upcase }}</p>
+    <h1>{{ page.title | escape }}</h1>
+    {% if page.description %}<p class="article-deck">{{ page.description | escape }}</p>{% endif %}
+  </header>
+  <div class="prose">{{ content }}</div>
+  <aside class="article-signoff"><span class="signoff-mark">HN</span><p>Thanks for reading. Find my experiments on <a href="https://huggingface.co/CodeWithHammad">Hugging Face</a> or say hello by <a href="mailto:hammadconnect1@gmail.com">email</a>.</p></aside>
+</article>

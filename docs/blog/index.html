@@ -1,0 +1,18 @@
+---
+title: "Blog"
+description: "Learning notes and practical machine learning guides by Hammad Naeem."
+permalink: /blog/
+---
+<section class="listing-hero wrap">
+  <a class="back-link" href="{{ '/' | relative_url }}">← Home</a>
+  <p class="eyebrow">THE NOTEBOOK <span>/</span> IDEAS IN PROGRESS</p>
+  <h1>Notes from the<br><span class="highlight">learning curve.</span></h1>
+  <p class="article-deck">Guides, experiments, and lessons learned while studying machine learning.</p>
+</section>
+<section class="wrap listing-body">
+  {% if site.posts.size > 0 %}
+    <div class="post-list">{% for post in site.posts %}<a class="post-row post-row-tall" href="{{ post.url | relative_url }}"><span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span><span class="post-main"><span class="post-title">{{ post.title | escape }}</span><span class="post-summary">{{ post.description | default: post.excerpt | strip_html | truncate: 180 }}</span></span><span class="post-arrow">↗</span></a>{% endfor %}</div>
+  {% else %}
+    <div class="empty-note"><span class="empty-mark">✳</span><div><h2>No posts yet.</h2><p>When a Markdown article is added to the repository, it will appear here automatically.</p></div></div>
+  {% endif %}
+</section>

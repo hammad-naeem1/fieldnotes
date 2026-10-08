@@ -1,0 +1,19 @@
+---
+title: "My portfolio"
+description: "Machine learning projects and experiments by Hammad Naeem."
+permalink: /portfolio/
+---
+<section class="listing-hero wrap">
+  <a class="back-link" href="{{ '/' | relative_url }}">← Home</a>
+  <p class="eyebrow">MY PORTFOLIO <span>/</span> WORK IN PROGRESS</p>
+  <h1>Things I’ve<br><span class="highlight">built and learned.</span></h1>
+  <p class="article-deck">Small machine learning projects, experiments, and the notes behind them. Each entry can link to its code, demo, and model.</p>
+</section>
+<section class="wrap listing-body">
+  {% assign project_items = site.projects | sort: "date" | reverse %}
+  {% if project_items.size > 0 %}
+    <div class="project-grid">{% for project in project_items %}<a class="project-card" href="{{ project.url | relative_url }}"><span class="project-status">{{ project.status | default: "PROJECT" | upcase }}</span><h2>{{ project.title | escape }}</h2><p>{{ project.summary | default: project.excerpt | strip_html | truncate: 180 }}</p>{% if project.tags %}<div class="tag-list">{% for tag in project.tags %}<span>{{ tag }}</span>{% endfor %}</div>{% endif %}<span class="card-cta">Read project note <span aria-hidden="true">→</span></span></a>{% endfor %}</div>
+  {% else %}
+    <div class="portfolio-empty portfolio-empty-large"><div><span class="eyebrow">FIRST PROJECT: COMING SOON</span><h2>A home for the work, not just the results.</h2><p>Project pages can include the question, dataset, approach, results, lessons, and links to the GitHub code or Hugging Face demo. Hammad can add each one by creating a Markdown file in the repository.</p><div class="project-links"><a class="button button-dark" href="https://huggingface.co/CodeWithHammad" target="_blank" rel="noopener noreferrer">Hugging Face profile ↗</a><a class="button button-light" href="https://github.com/hammad-naeem1" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a></div></div></div>
+  {% endif %}
+</section>
