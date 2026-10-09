@@ -2,6 +2,7 @@
 title: "Your project name"
 date: YYYY-MM-DD
 summary: "One sentence about the problem and what you built."
+type: "project"
 status: "In progress"
 tags: [Python, machine-learning]
 github_url: "https://github.com/hammad-naeem1/your-project"

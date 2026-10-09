@@ -4,7 +4,7 @@ layout: default
 <article class="article-shell project-article">
   <a class="back-link" href="{{ '/portfolio/' | relative_url }}">← Portfolio</a>
   <header class="article-header">
-    <p class="eyebrow">PROJECT NOTE <span>/</span> {{ page.status | default: "BUILDING" | upcase }}</p>
+    <p class="eyebrow">{% if page.type == "model" %}MACHINE LEARNING MODEL{% else %}PROJECT NOTE{% endif %} <span>/</span> {{ page.status | default: "BUILDING" | upcase }}</p>
     <h1>{{ page.title | escape }}</h1>
     {% if page.summary %}<p class="article-deck">{{ page.summary | escape }}</p>{% endif %}
     {% if page.tags %}<div class="tag-list">{% for tag in page.tags %}<span>{{ tag }}</span>{% endfor %}</div>{% endif %}

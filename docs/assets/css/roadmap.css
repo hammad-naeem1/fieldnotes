@@ -50,6 +50,6 @@
 .contact-link-card>span:last-child{font-size:11px;line-height:1.65;color:#66736d;margin-top:auto}
 .contact-link-card code{font:10px var(--mono);background:#e7eae2;padding:3px 6px;border-radius:2px;color:var(--ink)}
 .contact-discord{background:#e8e4f5}
-.portfolio-edit-guide{margin-top:18px}
+@media(max-width:380px){.site-nav{font-size:9px}.nav-contact{padding-inline:5px}}
 @media(max-width:700px){.track-grid{grid-template-columns:1fr}.role-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr 1fr}.checklist-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.contact-primary{align-items:flex-start;flex-direction:column}}
 @media(max-width:520px){.course-shelf{padding:18px;margin-inline:-2px}.course-grid,.contact-grid{grid-template-columns:1fr}.course-card{min-height:160px}.checklist-grid{grid-template-columns:1fr 1fr}.professional-checklist{padding:19px}.roadmap-page .article-header h1{font-size:clamp(34px,9.8vw,48px)}.contact-primary{padding:22px}.contact-primary h2{font-size:22px}}

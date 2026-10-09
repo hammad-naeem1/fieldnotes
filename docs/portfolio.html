@@ -7,18 +7,23 @@ permalink: /portfolio/
   <a class="back-link" href="{{ '/' | relative_url }}">← Home</a>
   <p class="eyebrow">MY PORTFOLIO <span>/</span> PROJECTS + MODELS</p>
   <h1>My projects,<br><span class="highlight">models, and ideas.</span></h1>
-  <p class="article-deck">A growing collection of things I build and explore. Each entry can have its own title, description, GitHub code, Hugging Face model or demo, and other useful links. I can add or edit projects any time in the GitHub repository.</p>
+  <p class="article-deck">This portfolio shares my machine learning models and other projects. Each entry explains what it is, what I explored, and what I learned. Where available, you can follow the links to view the code or try a model demo.</p>
 </section>
-<section class="wrap listing-body">
-  {% assign project_items = site.projects | sort: "date" | reverse %}
+<section class="wrap listing-body" aria-labelledby="models-heading">
+  <div class="section-heading"><div><p class="eyebrow">MODEL SHOWCASE</p><h2 id="models-heading">Machine learning models.</h2></div></div>
+  {% assign model_items = site.projects | where: "type", "model" | sort: "date" | reverse %}
+  {% if model_items.size > 0 %}
+    <div class="project-grid">{% for project in model_items %}<a class="project-card" href="{{ project.url | relative_url }}"><span class="project-status">{{ project.status | default: "MODEL" | upcase }}</span><h3>{{ project.title | escape }}</h3><p>{{ project.summary | default: project.excerpt | strip_html | truncate: 180 }}</p>{% if project.tags %}<div class="tag-list">{% for tag in project.tags %}<span>{{ tag }}</span>{% endfor %}</div>{% endif %}<span class="card-cta">Model details and links <span aria-hidden="true">→</span></span></a>{% endfor %}</div>
+  {% else %}
+    <div class="empty-note"><span class="empty-mark">✳</span><div><h3>Models will appear here.</h3><p>This section is for machine learning models I’ve built or explored, with a short description and links to the model or demo when available.</p></div></div>
+  {% endif %}
+</section>
+<section class="wrap listing-body" aria-labelledby="projects-heading">
+  <div class="section-heading"><div><p class="eyebrow">PROJECT NOTES</p><h2 id="projects-heading">Other projects and experiments.</h2></div></div>
+  {% assign project_items = site.projects | where_exp: "project", "project.type != 'model'" | sort: "date" | reverse %}
   {% if project_items.size > 0 %}
     <div class="project-grid">{% for project in project_items %}<a class="project-card" href="{{ project.url | relative_url }}"><span class="project-status">{{ project.status | default: "PROJECT" | upcase }}</span><h2>{{ project.title | escape }}</h2><p>{{ project.summary | default: project.excerpt | strip_html | truncate: 180 }}</p>{% if project.tags %}<div class="tag-list">{% for tag in project.tags %}<span>{{ tag }}</span>{% endfor %}</div>{% endif %}<span class="card-cta">Read project note <span aria-hidden="true">→</span></span></a>{% endfor %}</div>
   {% else %}
-    <div class="portfolio-empty portfolio-empty-large"><div><span class="eyebrow">READY FOR YOUR NEXT PROJECT</span><h2>Add a title, a short description, and the links.</h2><p>Use this space for machine learning models, code, demos, and other projects. For each one, explain what it does and what you learned, then link to its GitHub page, Hugging Face model or Space, demo, or report.</p><div class="project-links"><a class="button button-dark" href="{{ site.huggingface_url }}" target="_blank" rel="noopener noreferrer">Hugging Face profile ↗</a><a class="button button-light" href="{{ site.github_url }}" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a></div></div></div>
+    <div class="empty-note"><span class="empty-mark">✳</span><div><h3>Project notes will appear here.</h3><p>I’ll share the question behind each project, what I built, and the lessons or next steps.</p></div></div>
   {% endif %}
-  <div class="portfolio-empty portfolio-empty-large portfolio-edit-guide">
-    <div><span class="eyebrow">EDIT THIS PORTFOLIO LATER</span><h2>Add or update an item in GitHub.</h2><p>Open the project folder, create a Markdown file in <code>docs/_projects/</code>, and fill in its title, description, and links. Copy the starter first. Commit the file and GitHub Pages will add it to this page.</p>
-      <div class="project-links"><a class="button button-dark" href="{{ site.repository_url }}/tree/main/docs/_projects" target="_blank" rel="noopener noreferrer">Open project folder ↗</a><a class="button button-light" href="{{ site.repository_url }}/blob/main/docs/_templates/new-project.md" target="_blank" rel="noopener noreferrer">Open project starter ↗</a></div>
-    </div>
-  </div>
 </section>
