@@ -1,19 +1,24 @@
 ---
-title: "My portfolio"
-description: "Machine learning projects and experiments by Hammad Naeem."
+title: "Portfolio"
+description: "Hammad Naeem’s editable portfolio of projects, machine learning models, code, and demos."
 permalink: /portfolio/
 ---
 <section class="listing-hero wrap">
   <a class="back-link" href="{{ '/' | relative_url }}">← Home</a>
-  <p class="eyebrow">MY PORTFOLIO <span>/</span> WORK IN PROGRESS</p>
-  <h1>Things I’ve<br><span class="highlight">built and learned.</span></h1>
-  <p class="article-deck">Small machine learning projects, experiments, and the notes behind them. Each entry can link to its code, demo, and model. Add future work here without changing the learning roadmap.</p>
+  <p class="eyebrow">MY PORTFOLIO <span>/</span> PROJECTS + MODELS</p>
+  <h1>My projects,<br><span class="highlight">models, and ideas.</span></h1>
+  <p class="article-deck">A growing collection of things I build and explore. Each entry can have its own title, description, GitHub code, Hugging Face model or demo, and other useful links. I can add or edit projects any time in the GitHub repository.</p>
 </section>
 <section class="wrap listing-body">
   {% assign project_items = site.projects | sort: "date" | reverse %}
   {% if project_items.size > 0 %}
     <div class="project-grid">{% for project in project_items %}<a class="project-card" href="{{ project.url | relative_url }}"><span class="project-status">{{ project.status | default: "PROJECT" | upcase }}</span><h2>{{ project.title | escape }}</h2><p>{{ project.summary | default: project.excerpt | strip_html | truncate: 180 }}</p>{% if project.tags %}<div class="tag-list">{% for tag in project.tags %}<span>{{ tag }}</span>{% endfor %}</div>{% endif %}<span class="card-cta">Read project note <span aria-hidden="true">→</span></span></a>{% endfor %}</div>
   {% else %}
-    <div class="portfolio-empty portfolio-empty-large"><div><span class="eyebrow">FIRST PROJECT: COMING SOON</span><h2>A home for the work, not just the results.</h2><p>Project pages can include the question, dataset, approach, results, lessons, and links to the GitHub code or Hugging Face demo. Add each future project as a Markdown file in the repository; the roadmap and other pages can stay as they are.</p><div class="project-links"><a class="button button-dark" href="{{ site.huggingface_url }}" target="_blank" rel="noopener noreferrer">Hugging Face profile ↗</a><a class="button button-light" href="{{ site.github_url }}" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a></div></div></div>
+    <div class="portfolio-empty portfolio-empty-large"><div><span class="eyebrow">READY FOR YOUR NEXT PROJECT</span><h2>Add a title, a short description, and the links.</h2><p>Use this space for machine learning models, code, demos, and other projects. For each one, explain what it does and what you learned, then link to its GitHub page, Hugging Face model or Space, demo, or report.</p><div class="project-links"><a class="button button-dark" href="{{ site.huggingface_url }}" target="_blank" rel="noopener noreferrer">Hugging Face profile ↗</a><a class="button button-light" href="{{ site.github_url }}" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a></div></div></div>
   {% endif %}
+  <div class="portfolio-empty portfolio-empty-large portfolio-edit-guide">
+    <div><span class="eyebrow">EDIT THIS PORTFOLIO LATER</span><h2>Add or update an item in GitHub.</h2><p>Open the project folder, create a Markdown file in <code>docs/_projects/</code>, and fill in its title, description, and links. Copy the starter first. Commit the file and GitHub Pages will add it to this page.</p>
+      <div class="project-links"><a class="button button-dark" href="{{ site.repository_url }}/tree/main/docs/_projects" target="_blank" rel="noopener noreferrer">Open project folder ↗</a><a class="button button-light" href="{{ site.repository_url }}/blob/main/docs/_templates/new-project.md" target="_blank" rel="noopener noreferrer">Open project starter ↗</a></div>
+    </div>
+  </div>
 </section>

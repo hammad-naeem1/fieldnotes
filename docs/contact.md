@@ -1,13 +1,13 @@
 ---
 title: "Contact me"
-description: "Get in touch with Hammad Naeem about internships, projects, or machine learning."
+description: "Contact Hammad Naeem about internships, computer science, data science, machine learning, or projects."
 permalink: /contact/
 ---
 <section class="listing-hero wrap contact-hero">
   <a class="back-link" href="{{ '/' | relative_url }}">← Home</a>
   <p class="eyebrow">CONTACT ME <span>/</span> LET’S CONNECT</p>
   <h1>Have a question<br>or an opportunity?</h1>
-  <p class="article-deck">I’m happy to hear about internships, project collaborations, machine learning, or useful feedback on something I’ve shared.</p>
+  <p class="article-deck">I’m happy to hear about internships, project collaborations, computer science, data science, machine learning, or feedback on something I’ve shared.</p>
 </section>
 <section class="wrap contact-content">
   <div class="contact-primary">
@@ -16,6 +16,7 @@ permalink: /contact/
   </div>
   <div class="contact-grid">
     <a class="contact-link-card" href="{{ site.github_url }}" target="_blank" rel="noopener noreferrer"><span class="course-label">CODE AND PROJECTS</span><strong>GitHub</strong><span>See my repositories and project work ↗</span></a>
+    {% if site.linkedin_url and site.linkedin_url != "" %}<a class="contact-link-card" href="{{ site.linkedin_url }}" target="_blank" rel="noopener noreferrer"><span class="course-label">PROFESSIONAL PROFILE</span><strong>LinkedIn</strong><span>Connect with me on LinkedIn ↗</span></a>{% endif %}
     <a class="contact-link-card" href="{{ site.huggingface_url }}" target="_blank" rel="noopener noreferrer"><span class="course-label">MODELS AND DEMOS</span><strong>Hugging Face</strong><span>Open my profile: {{ site.huggingface_username }} ↗</span></a>
     <div class="contact-link-card contact-discord"><span class="course-label">COMMUNITY</span><strong>Discord</strong><span>Username: <code>{{ site.discord_username }}</code><br>Send me a server invite if you want this to be a clickable link.</span></div>
   </div>

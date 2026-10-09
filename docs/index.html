@@ -1,14 +1,14 @@
 ---
-title: "Machine learning, one clear step at a time"
-description: "Learning notes, practical guides, and machine learning projects by Hammad Naeem."
+title: "Learning computer science, one clear step at a time"
+description: "Computer science foundations, learning notes, and projects in data science and machine learning by Hammad Naeem."
 ---
 <section class="hero wrap">
   <div class="hero-copy">
-    <p class="eyebrow"><span class="status-dot"></span> LEARNING IN PUBLIC <span>/</span> MACHINE LEARNING</p>
+    <p class="eyebrow"><span class="status-dot"></span> LEARNING IN PUBLIC <span>/</span> COMPUTER SCIENCE + ML</p>
     <h1>Make the next<br>idea <span class="highlight">make sense.</span></h1>
-    <p class="hero-intro">I’m Hammad. I’m learning machine learning by building small projects, asking better questions, and writing down what I learn along the way.</p>
+    <p class="hero-intro">I’m Hammad. I’m building my computer science foundations and exploring data science and machine learning through small projects, questions, and notes about what I learn.</p>
     <div class="hero-actions">
-      <a class="button button-dark" href="{{ '/learning-path/' | relative_url }}">Start the ML roadmap <span aria-hidden="true">↗</span></a>
+      <a class="button button-dark" href="{{ '/learning-path/' | relative_url }}">Start the learning roadmap <span aria-hidden="true">↗</span></a>
       <a class="text-link" href="{{ '/portfolio/' | relative_url }}">See my portfolio <span aria-hidden="true">→</span></a>
     </div>
     <p class="hero-caption"><span class="mono">01 — 03</span> Learn · Build · Share</p>
@@ -23,6 +23,11 @@ description: "Learning notes, practical guides, and machine learning projects by
 
 <section class="path-strip">
   <div class="wrap strip-inner"><span class="eyebrow">THE APPROACH</span><p>Learn a concept. Try it on real data. Explain it in plain language.</p><a href="{{ '/learning-path/' | relative_url }}">See the path <span aria-hidden="true">↗</span></a></div>
+</section>
+
+<section class="content-section wrap">
+  <div class="section-heading"><div><p class="eyebrow">FOUNDATIONS / BEYOND ML</p><h2>Computer science, step by step.</h2></div><a class="text-link" href="{{ '/general-cs/' | relative_url }}">Explore General CS ↗</a></div>
+  <div class="portfolio-empty"><div><span class="eyebrow">TOPICS I’M EXPLORING</span><h3>Programming, algorithms, databases, and how software works.</h3><p>I’m learning these foundations gradually and will add notes as I go. This is a learning list, not a claim that I’ve mastered every topic.</p></div><a class="button button-outline" href="{{ '/general-cs/' | relative_url }}">See the topics ↗</a></div>
 </section>
 
 <section class="content-section wrap">
@@ -57,7 +62,7 @@ description: "Learning notes, practical guides, and machine learning projects by
   {% if project_items.size > 0 %}
     <div class="project-grid">{% for project in project_items limit: 3 %}<a class="project-card" href="{{ project.url | relative_url }}"><span class="project-status">{{ project.status | default: "PROJECT" | upcase }}</span><h3>{{ project.title | escape }}</h3><p>{{ project.summary | default: project.excerpt | strip_html | truncate: 145 }}</p><span class="card-cta">Project details <span aria-hidden="true">→</span></span></a>{% endfor %}</div>
   {% else %}
-    <div class="portfolio-empty"><div><span class="eyebrow">IN PROGRESS</span><h3>Every project starts with a question.</h3><p>This space is ready for ML experiments, notebooks, demos, and lessons learned. Explore Hammad’s model page while the first project is being built.</p></div><a class="button button-outline" href="{{ site.huggingface_url }}" target="_blank" rel="noopener noreferrer">Hugging Face profile ↗</a></div>
+      <div class="portfolio-empty"><div><span class="eyebrow">IN PROGRESS</span><h3>A home for my projects and models.</h3><p>This space is ready for ML models, code, demos, and other projects, with a short description of what I’m learning from each one. I can add or update entries as my work grows.</p></div><a class="button button-outline" href="{{ site.huggingface_url }}" target="_blank" rel="noopener noreferrer">Hugging Face profile ↗</a></div>
   {% endif %}
 </section>
 

@@ -19,6 +19,7 @@
         <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="hammad.dev home">hammad<span>.dev</span></a>
         <nav class="site-nav" aria-label="Main navigation">
           <a href="{{ '/learning-path/' | relative_url }}" {% if page.url contains 'learning-path' %}aria-current="page"{% endif %}>Roadmap</a>
+          <a href="{{ '/general-cs/' | relative_url }}" {% if page.url contains 'general-cs' %}aria-current="page"{% endif %}>General CS</a>
           <a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog' %}aria-current="page"{% endif %}>Blog</a>
           <a href="{{ '/portfolio/' | relative_url }}" {% if page.url contains '/portfolio' %}aria-current="page"{% endif %}>Portfolio</a>
           <a class="nav-contact" href="{{ '/contact/' | relative_url }}" {% if page.url contains '/contact' %}aria-current="page"{% endif %}>Contact me <span aria-hidden="true">↗</span></a>
@@ -32,11 +33,12 @@
       <div class="footer-inner">
         <div>
           <a class="wordmark footer-wordmark" href="{{ '/' | relative_url }}">hammad<span>.dev</span></a>
-          <p class="footer-note">Notes from the process of learning and building with machine learning.</p>
+          <p class="footer-note">Notes from learning computer science, data, and machine learning by building.</p>
         </div>
         <div class="footer-links" aria-label="Social links">
           <a href="{{ site.github_url }}" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
           <a href="{{ site.huggingface_url }}" target="_blank" rel="noopener noreferrer">Hugging Face <span aria-hidden="true">↗</span></a>
+          {% if site.linkedin_url and site.linkedin_url != "" %}<a href="{{ site.linkedin_url }}" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>{% endif %}
           <span>Discord: {{ site.discord_username }}</span>
           <a href="mailto:{{ site.contact_email }}">Email <span aria-hidden="true">↗</span></a>
           <a href="{{ '/contact/' | relative_url }}">Contact me <span aria-hidden="true">↗</span></a>

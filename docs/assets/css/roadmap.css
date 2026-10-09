@@ -44,11 +44,12 @@
 .contact-primary h2{font:700 25px/1.2 var(--serif);letter-spacing:-.6px;margin:0 0 6px}
 .contact-primary p:not(.eyebrow){font-size:12px;line-height:1.7;color:#5b6863;margin:0;max-width:490px}
 .contact-primary .button{flex:0 0 auto}
-.contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.contact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}
 .contact-link-card{min-height:153px;padding:18px;display:flex;flex-direction:column;align-items:flex-start;gap:9px;background:#f0f0e9;border:1px solid var(--line);transition:transform .18s,border-color .18s}
 .contact-link-card strong{font:700 18px var(--serif);letter-spacing:-.3px}
 .contact-link-card>span:last-child{font-size:11px;line-height:1.65;color:#66736d;margin-top:auto}
 .contact-link-card code{font:10px var(--mono);background:#e7eae2;padding:3px 6px;border-radius:2px;color:var(--ink)}
 .contact-discord{background:#e8e4f5}
+.portfolio-edit-guide{margin-top:18px}
 @media(max-width:700px){.track-grid{grid-template-columns:1fr}.role-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr 1fr}.checklist-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.contact-primary{align-items:flex-start;flex-direction:column}}
 @media(max-width:520px){.course-shelf{padding:18px;margin-inline:-2px}.course-grid,.contact-grid{grid-template-columns:1fr}.course-card{min-height:160px}.checklist-grid{grid-template-columns:1fr 1fr}.professional-checklist{padding:19px}.roadmap-page .article-header h1{font-size:clamp(34px,9.8vw,48px)}.contact-primary{padding:22px}.contact-primary h2{font-size:22px}}

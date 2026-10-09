@@ -1,5 +1,5 @@
 title: "hammad.dev"
-description: "Machine learning notes, learning guides, and projects by Hammad Naeem."
+description: "Computer science foundations, learning notes, and project work by Hammad Naeem."
 url: "https://hammad-naeem1.github.io"
 baseurl: "/fieldnotes"
 timezone: "Asia/Karachi"
@@ -7,9 +7,11 @@ markdown: kramdown
 permalink: /blog/:year/:month/:day/:title/
 contact_email: "hammadconnect1@gmail.com"
 github_url: "https://github.com/hammad-naeem1"
+repository_url: "https://github.com/hammad-naeem1/fieldnotes"
 huggingface_username: "codehammad"
 huggingface_url: "https://huggingface.co/codehammad"
 discord_username: "hammad-naeem1"
+linkedin_url: "https://www.linkedin.com/in/hammad-dev-a248aa440"
 
 collections:
   projects:
