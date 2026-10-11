@@ -1,7 +1,7 @@
 title: "hammad.dev"
 description: "Computer science foundations, learning notes, and project work by Hammad Naeem."
-url: "https://hammad-naeem1.github.io"
-baseurl: "/fieldnotes"
+url: "https://hammaddev.is-a.dev"
+baseurl: ""
 timezone: "Asia/Karachi"
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title/
