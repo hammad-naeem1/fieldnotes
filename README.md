@@ -2,7 +2,7 @@
 
 Welcome to the central repository for **hammad.dev**, a personal website showcasing computer science notes, software engineering projects, machine learning experiments, and technical write-ups.
 
-Live Website: **[https://hammad.dev.is-a.dev](https://hammad.dev.is-a.dev)**
+Live Website: **[https://hammad.dev.is-a.dev](https://hammaddev.is-a.dev)**
 
 ---
 
@@ -42,7 +42,7 @@ Live Website: **[https://hammad.dev.is-a.dev](https://hammad.dev.is-a.dev)**
 
 
 🔗 Connect & Links
-Live Site: https://hammad.dev.is-a.dev
+Live Site: https://hammaddev.is-a.dev
 
 . GitHub: @hammad-naeem1
 
